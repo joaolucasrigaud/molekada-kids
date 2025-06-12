@@ -1,0 +1,41 @@
+.header {
+  background-color: white;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eeeeee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff7a3d; /* Laranja vibrante */
+  text-decoration: none;
+}
+
+.links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #343a40; /* Cinza escuro */
+  font-weight: 600;
+  transition: color 0.2s ease-in-out;
+}
+
+.navLink:hover {
+  color: #ff7a3d; /* Laranja vibrante */
+}

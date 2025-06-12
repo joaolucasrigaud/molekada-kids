@@ -1,21 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer components {
-  .container-custom {
-    @apply container mx-auto px-4;
-  }
-  .btn {
-    @apply inline-block px-6 py-3 rounded-lg font-bold text-center transition-transform transform hover:scale-105;
-  }
-  .btn-primary {
-    @apply bg-orange-vibrant text-white shadow-lg;
-  }
-  .btn-secondary {
-    @apply bg-gray-dark text-white shadow-lg;
-  }
-  .input {
-    @apply w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-orange-vibrant focus:border-transparent;
-  }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

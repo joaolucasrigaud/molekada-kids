@@ -1,22 +1,20 @@
 import Link from 'next/link';
 import { ShoppingCart } from 'lucide-react';
+import styles from './Header.module.css'; // <-- Importa o nosso novo CSS!
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <nav className="container-custom flex justify-between items-center py-4">
-        <Link href="/" className="text-2xl font-bold font-heading text-orange-vibrant">
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <Link href="/" className={styles.logo}>
           Molecada Kids
         </Link>
-        <div className="flex items-center gap-6">
-          <Link href="/produtos" className="hover:text-orange-vibrant">Produtos</Link>
-          <Link href="/sobre" className="hover:text-orange-vibrant">Sobre</Link>
-          <Link href="/contato" className="hover:text-orange-vibrant">Contato</Link>
-          <Link href="/carrinho" className="relative">
-            <ShoppingCart className="hover:text-orange-vibrant" />
-            <span className="absolute -top-2 -right-2 bg-orange-vibrant text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
-              0
-            </span>
+        <div className={styles.links}>
+          <Link href="/produtos" className={styles.navLink}>Produtos</Link>
+          <Link href="/sobre" className={styles.navLink}>Sobre</Link>
+          <Link href="/contato" className={styles.navLink}>Contato</Link>
+          <Link href="/carrinho" className={styles.navLink}>
+            <ShoppingCart />
           </Link>
         </div>
       </nav>
