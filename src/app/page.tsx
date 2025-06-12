@@ -1,40 +1,25 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './page.module.css';
-import ProductCard from '@/components/ProductCard'; // 1. Importamos o nosso novo componente
+import ProductCard from '@/components/ProductCard';
+import CategoryCard from '@/components/CategoryCard';
 
-// 2. Adicionamos a lista de produtos completa, com os tamanhos
+// DADOS PARA A PÁGINA (aqui definimos o que será mostrado)
 const featuredProducts = [
-  {
-    id: 'vestido-colorido',
-    name: 'Vestido Listrado Colorido',
-    price: 79.90,
-    image: '/images/products/vestido-colorido.jpg',
-    sizes: ['4', '6', '8', '10'],
-  },
-  {
-    id: 'conjunto-menino',
-    name: 'Conjunto Moletom Verde',
-    price: 89.90,
-    image: '/images/products/conjunto-menino.jpg',
-    sizes: ['2', '4', '6'],
-  },
-  {
-    id: 'look-verao',
-    name: 'Look Verão Praia',
-    price: 69.90,
-    image: '/images/products/look-verao.png',
-    sizes: ['1', '2', '3'],
-  },
-  {
-    id: 'vestido-macaco',
-    name: 'Vestido Estampa Macaco',
-    price: 59.90,
-    image: '/images/products/vestido-macaco.jpeg',
-    sizes: ['P', 'M', 'G'],
-  },
+  { id: 'vestido-colorido', name: 'Vestido Listrado Colorido', price: 79.90, image: '/images/products/vestido-colorido.jpg', sizes: ['4', '6', '8', '10'] },
+  { id: 'conjunto-menino', name: 'Conjunto Moletom Verde', price: 89.90, image: '/images/products/conjunto-menino.jpg', sizes: ['2', '4', '6'] },
+  { id: 'look-verao', name: 'Look Verão Praia', price: 69.90, image: '/images/products/look-verao.png', sizes: ['1', '2', '3'] },
+  { id: 'vestido-macaco', name: 'Vestido Estampa Macaco', price: 59.90, image: '/images/products/vestido-macaco.jpeg', sizes: ['P', 'M', 'G'] },
 ];
 
+const categories = [
+  { id: 'meninas', name: 'Meninas', image: '/images/cat-meninas.jpg', color: '#ff69b4' }, // Rosa
+  { id: 'meninos', name: 'Meninos', image: '/images/cat-meninos.jpg', color: '#5fb8ff' }, // Azul
+  { id: 'outlet', name: 'Outlet', image: '/images/cat-outlet.jpg', color: '#ff7a3d' },  // Laranja
+];
+
+
+// COMPONENTE DA PÁGINA HOME
 export default function Home() {
   return (
     <>
@@ -53,12 +38,17 @@ export default function Home() {
       <section className={styles.section}>
         <div className="container-custom">
           <h2 className={styles.sectionTitle}>Navegue por Categorias</h2>
-          <div className={styles.productGrid}>
-            {/* Placeholder para os Cards de Categoria */}
-            <div className="text-center p-4 border rounded-lg">Categoria 1</div>
-            <div className="text-center p-4 border rounded-lg">Categoria 2</div>
-            <div className="text-center p-4 border rounded-lg">Categoria 3</div>
-            <div className="text-center p-4 border rounded-lg">Categoria 4</div>
+          {/* Usando nosso novo componente CategoryCard */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {categories.map((category) => (
+              <CategoryCard
+                key={category.id}
+                name={category.name}
+                image={category.image}
+                link={`/produtos?categoria=${category.id}`}
+                color={category.color}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -67,7 +57,7 @@ export default function Home() {
       <section className={`${styles.section} ${styles.productsSection}`}>
         <div className="container-custom">
           <h2 className={styles.sectionTitle}>Produtos em Destaque</h2>
-          {/* 3. Substituímos os placeholders pelo nosso novo componente */}
+          {/* Usando nosso novo componente ProductCard */}
           <div className={styles.productGrid}>
             {featuredProducts.map((product) => (
               <ProductCard
