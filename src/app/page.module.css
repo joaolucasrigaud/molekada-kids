@@ -87,3 +87,42 @@
     grid-template-columns: repeat(4, 1fr);
   }
 }
+
+
+/* Adicione este código ao final de src/app/page.module.css */
+
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.grid3cols {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+.grid4cols {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+/* Media Queries para responsividade dos grids */
+@media (min-width: 768px) { /* Telas médias como tablets */
+  .grid3cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid4cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) { /* Telas grandes como desktops */
+  .grid4cols {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

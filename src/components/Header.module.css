@@ -1,41 +1,100 @@
 .header {
   background-color: white;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #eeeeee;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 2rem;
+  border-bottom: 1px solid #f0f0f0;
   position: sticky;
   top: 0;
   z-index: 50;
 }
 
 .nav {
-  max-width: 1200px;
+  max-width: 1400px; /* Um pouco mais largo para acomodar tudo */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 70px; /* Altura total do header */
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #ff7a3d; /* Laranja vibrante */
-  text-decoration: none;
-}
-
-.links {
+/* Estilo para as seções da esquerda e direita */
+.navSection {
+  flex: 1; /* Ocupa 1/3 do espaço */
   display: flex;
-  gap: 1.5rem;
   align-items: center;
+  gap: 1.5rem;
+}
+
+.navSectionRight {
+  justify-content: flex-end; /* Alinha itens à direita */
+}
+
+/* Estilo para a seção do logo no centro */
+.logoSection {
+  flex-shrink: 0; /* Impede que o logo seja espremido */
+}
+
+.logoLink {
+  position: relative;
+  display: block;
+  height: 130px;
+  width: 200px;
 }
 
 .navLink {
   text-decoration: none;
-  color: #343a40; /* Cinza escuro */
+  color: #343a40;
   font-weight: 600;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s;
 }
 
 .navLink:hover {
-  color: #ff7a3d; /* Laranja vibrante */
+  color: #ff7a3d;
+}
+
+/* Estilos para a Barra de Busca */
+.searchBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 0.75rem;
+  color: #999;
+}
+
+.searchInput {
+  background-color: #f8f9fa; /* gray-light */
+  border: 1px solid #f0f0f0;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem 0.5rem 2.5rem; /* Padding à esquerda para o ícone */
+  width: 250px;
+  transition: all 0.2s;
+}
+
+.searchInput::placeholder {
+  color: #999;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #ff7a3d;
+  background-color: white;
+}
+
+/* Estilos para o grupo de ícones */
+.iconGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.iconLink {
+  color: #343a40;
+  transition: color 0.2s;
+}
+
+.iconLink:hover {
+  color: #ff7a3d;
 }

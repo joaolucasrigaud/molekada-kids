@@ -4,7 +4,14 @@ import styles from './page.module.css';
 import ProductCard from '@/components/ProductCard';
 import CategoryCard from '@/components/CategoryCard';
 
-// DADOS PARA A PÁGINA (aqui definimos o que será mostrado)
+// Dados para as categorias
+const categories = [
+  { id: 'meninas', name: 'Meninas', image: '/images/cat-meninas.jpg', color: '#ff69b4' }, // Rosa
+  { id: 'meninos', name: 'Meninos', image: '/images/cat-meninos.jpg', color: '#5fb8ff' }, // Azul
+  { id: 'outlet', name: 'Outlet', image: '/images/cat-outlet.jpg', color: '#ff7a3d' },  // Laranja
+];
+
+// Dados para os produtos em destaque
 const featuredProducts = [
   { id: 'vestido-colorido', name: 'Vestido Listrado Colorido', price: 79.90, image: '/images/products/vestido-colorido.jpg', sizes: ['4', '6', '8', '10'] },
   { id: 'conjunto-menino', name: 'Conjunto Moletom Verde', price: 89.90, image: '/images/products/conjunto-menino.jpg', sizes: ['2', '4', '6'] },
@@ -12,14 +19,7 @@ const featuredProducts = [
   { id: 'vestido-macaco', name: 'Vestido Estampa Macaco', price: 59.90, image: '/images/products/vestido-macaco.jpeg', sizes: ['P', 'M', 'G'] },
 ];
 
-const categories = [
-  { id: 'meninas', name: 'Meninas', image: '/images/cat-meninas.jpg', color: '#ff69b4' }, // Rosa
-  { id: 'meninos', name: 'Meninos', image: '/images/cat-meninos.jpg', color: '#5fb8ff' }, // Azul
-  { id: 'outlet', name: 'Outlet', image: '/images/cat-outlet.jpg', color: '#ff7a3d' },  // Laranja
-];
-
-
-// COMPONENTE DA PÁGINA HOME
+// Componente da Página Home
 export default function Home() {
   return (
     <>
@@ -36,10 +36,9 @@ export default function Home() {
 
       {/* Seção de Categorias */}
       <section className={styles.section}>
-        <div className="container-custom">
+        <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Navegue por Categorias</h2>
-          {/* Usando nosso novo componente CategoryCard */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className={styles.grid3cols}>
             {categories.map((category) => (
               <CategoryCard
                 key={category.id}
@@ -55,10 +54,9 @@ export default function Home() {
 
       {/* Seção de Produtos em Destaque */}
       <section className={`${styles.section} ${styles.productsSection}`}>
-        <div className="container-custom">
+        <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Produtos em Destaque</h2>
-          {/* Usando nosso novo componente ProductCard */}
-          <div className={styles.productGrid}>
+          <div className={styles.grid4cols}>
             {featuredProducts.map((product) => (
               <ProductCard
                 key={product.id}
