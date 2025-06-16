@@ -1,3 +1,4 @@
+
 'use client'; // <-- ESTA É A LINHA MAIS IMPORTANTE
 
 import styles from './page.module.css';
@@ -5,12 +6,15 @@ import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
 import { useState } from 'react';
 import { useCartStore } from '@/store/cartStore';
+import ProductCard from '@/components/ProductCard'; // Import ProductCard
 
 const productsData = [
     { id: 'vestido-colorido', name: 'Vestido Listrado Colorido', price: 79.90, image: '/images/products/vestido-colorido.jpg', sizes: ['4', '6', '8', '10'], description: 'Um vestido alegre e confortável para o dia a dia.' },
     { id: 'conjunto-menino', name: 'Conjunto Moletom Verde', price: 89.90, image: '/images/products/conjunto-menino.jpg', sizes: ['2', '4', '6'], description: 'Quentinho e estiloso para os meninos.' },
     { id: 'look-verao', name: 'Look Verão Praia', price: 69.90, image: '/images/products/look-verao.png', sizes: ['1', '2', '3'], description: 'O look perfeito para um dia de sol.' },
     { id: 'vestido-macaco', name: 'Vestido Estampa Macaco', price: 59.90, image: '/images/products/vestido-macaco.jpeg', sizes: ['P', 'M', 'G'], description: 'Divertido e fofo, com uma estampa que as crianças amam.' },
+    { id: 'camiseta-dinossauro', name: 'Camiseta Dinossauro', price: 49.90, image: '/images/products/camiseta-dinossauro.jpg', sizes: ['2', '4', '6', '8'], description: 'Camiseta divertida com estampa de dinossauro.' },
+    { id: 'saia-florida', name: 'Saia Florida', price: 39.90, image: '/images/products/saia-florida.jpg', sizes: ['P', 'M', 'G'], description: 'Saia leve e colorida para o verão.' },
 ];
 
 export default function ProductDetailPage() {
@@ -41,6 +45,9 @@ export default function ProductDetailPage() {
     });
     alert(`${quantity}x ${product.name} (tamanho ${selectedSize}) adicionado ao carrinho!`);
   };
+
+  // Mock data for 'Quem viu, viu também' section, excluding the current product
+  const relatedProducts = productsData.filter(p => p.id !== slug).slice(0, 4); // Get up to 4 related products
 
   return (
     <div className={styles.pageContainer}>
@@ -84,6 +91,24 @@ export default function ProductDetailPage() {
           </button>
         </div>
       </div>
+
+      {/* Seção 'Quem viu, viu também' */}
+      <div className={styles.relatedProductsSection}>
+        <h2 className={styles.relatedProductsTitle}>Quem viu, viu também</h2>
+        <div className={styles.relatedProductsCarousel}>
+          {relatedProducts.map((p) => (
+            <ProductCard
+              key={p.id}
+              id={p.id}
+              name={p.name}
+              price={p.price}
+              image={p.image}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
+
+

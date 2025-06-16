@@ -99,3 +99,45 @@
   -webkit-appearance: none; /* Remove setas do Chrome/Safari */
   margin: 0;
 }
+
+/* Estilos para a seção 'Quem viu, viu também' */
+.relatedProductsSection {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e9ecef; /* Linha divisória */
+}
+
+.relatedProductsTitle {
+  font-size: 1.75rem;
+  font-weight: bold;
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.relatedProductsCarousel {
+  display: flex;
+  overflow-x: auto; /* Habilita o scroll horizontal */
+  gap: 1.5rem; /* Espaço entre os cards de produto */
+  padding-bottom: 1rem; /* Espaço para a barra de scroll */
+  -webkit-overflow-scrolling: touch; /* Suaviza o scroll em dispositivos touch */
+}
+
+.relatedProductsCarousel::-webkit-scrollbar {
+  height: 8px; /* Altura da barra de scroll */
+}
+
+.relatedProductsCarousel::-webkit-scrollbar-thumb {
+  background-color: #ff7a3d; /* Cor do 
+
+
+scroll da barra de rolagem */
+  border-radius: 10px;
+}
+
+.relatedProductsCarousel::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Cor do fundo da barra de rolagem */
+  border-radius: 10px;
+}
+
+
