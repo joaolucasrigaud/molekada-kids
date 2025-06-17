@@ -1,21 +1,21 @@
 /* Estilos para a página principal - src/app/page.module.css */
 
 .section {
-  padding-top: 4rem;    /* 64px */
-  padding-bottom: 4rem; /* 64px */
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .sectionTitle {
-  font-size: 2.25rem; /* 36px */
-  line-height: 2.5rem; /* 40px */
+  font-size: 2.25rem;
+  line-height: 2.5rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 3rem; /* 48px */
-  font-family: 'Nunito', sans-serif; /* Usando a fonte de título */
+  margin-bottom: 3rem;
+  font-family: "Nunito", sans-serif;
 }
 
 .sectionSubtitle {
-  max-width: 672px; /* max-w-2xl */
+  max-width: 672px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -24,73 +24,12 @@
   margin-bottom: 3rem;
 }
 
-
-/* Estilos para o Hero Banner */
-.hero {
-  background-color: #a8e0ff; /* blue-light */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 6rem 1rem; /* Mais padding */
-  text-align: center;
-}
-
-.heroTitle {
-  font-size: 3.75rem; /* 60px */
-  font-weight: 800;
-  font-family: 'Nunito', sans-serif;
-  color: #2c4c7c; /* blue-dark */
-  margin-bottom: 1rem;
-}
-
-.heroSubtitle {
-  font-size: 1.25rem; /* 20px */
-  color: #2c4c7c;
-  margin-bottom: 2rem;
-}
-
-.heroButton {
-  display: inline-block;
-  background-color: #ff7a3d; /* orange-vibrant */
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: transform 0.2s ease-in-out;
-}
-
-.heroButton:hover {
-  transform: scale(1.05);
-}
-
 /* Estilos para a seção de Produtos */
 .productsSection {
-  background-color: #f8f9fa; /* gray-light */
+  background-color: #f8f9fa;
 }
 
-.productGrid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem; /* 24px */
-}
-
-/* Media Queries para responsividade do grid */
-@media (min-width: 640px) { /* sm */
-  .productGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) { /* lg */
-  .productGrid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-
-/* Adicione este código ao final de src/app/page.module.css */
-
+/* Grids */
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -111,8 +50,7 @@
   gap: 1.5rem;
 }
 
-/* Media Queries para responsividade dos grids */
-@media (min-width: 768px) { /* Telas médias como tablets */
+@media (min-width: 768px) {
   .grid3cols {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -121,8 +59,70 @@
   }
 }
 
-@media (min-width: 1024px) { /* Telas grandes como desktops */
+@media (min-width: 1024px) {
   .grid4cols {
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- ESTILOS FINAIS PARA O CARROSSEL (PROPORÇÃO CINEMATOGRÁFICA) --- */
+.heroSlider {
+  width: 100%;
+  position: relative;
+  /* Proporção 2.4 : 1 (ex: 1920x800) */
+  aspect-ratio: 12 / 5;
+  background-color: #f8f9fa; /* Cor de fundo para preencher qualquer espaço mínimo */
+}
+
+.swiperContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.slideLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Customizando as setas e pontinhos do Swiper */
+.heroSlider :global(.swiper-button-next),
+.heroSlider :global(.swiper-button-prev) {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  transition: background-color 0.2s ease;
+}
+
+.heroSlider :global(.swiper-button-next:hover),
+.heroSlider :global(.swiper-button-prev:hover) {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.heroSlider :global(.swiper-button-next)::after,
+.heroSlider :global(.swiper-button-prev)::after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.heroSlider :global(.swiper-pagination-bullet) {
+  background-color: white;
+  opacity: 0.7;
+}
+
+.heroSlider :global(.swiper-pagination-bullet-active) {
+  background-color: #ff7a3d; /* Laranja da sua marca */
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* Ajustes para telas menores (mobile) */
+@media (max-width: 768px) {
+  .heroSlider {
+    /* No mobile, uma proporção mais alta fica melhor */
+    aspect-ratio: 4 / 3;
   }
 }

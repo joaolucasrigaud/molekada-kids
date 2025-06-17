@@ -1,37 +1,120 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import styles from './page.module.css';
-import ProductCard from '@/components/ProductCard';
-import CategoryCard from '@/components/CategoryCard';
+"use client";
 
-// Dados para as categorias
+import Link from "next/link";
+import Image from "next/image";
+import styles from "./page.module.css";
+import ProductCard from "@/components/ProductCard";
+import CategoryCard from "@/components/CategoryCard";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+
+// --- DADOS DAS CATEGORIAS (COM CAMINHOS CORRIGIDOS) ---
 const categories = [
-  { id: 'meninas', name: 'Meninas', image: '/images/cat-meninas.jpg', color: '#ff69b4' }, // Rosa
-  { id: 'meninos', name: 'Meninos', image: '/images/cat-meninos.jpg', color: '#5fb8ff' }, // Azul
-  { id: 'outlet', name: 'Outlet', image: '/images/cat-outlet.jpg', color: '#ff7a3d' },  // Laranja
+  // CAMINHOS CORRIGIDOS para apontar para os arquivos na raiz da pasta /public
+  {
+    id: "meninas",
+    name: "Meninas",
+    image: "/categoria-meninas.png",
+    color: "#ff69b4",
+  },
+  {
+    id: "meninos",
+    name: "Meninos",
+    image: "/categoria-meninos.png",
+    color: "#5fb8ff",
+  },
+  {
+    id: "outlet",
+    name: "Outlet",
+    image: "/categoria-outlet.png",
+    color: "#ff7a3d",
+  },
 ];
 
-// Dados para os produtos em destaque
+// --- DADOS DOS PRODUTOS (COM CAMINHOS CORRIGIDOS) ---
 const featuredProducts = [
-  { id: 'vestido-colorido', name: 'Vestido Listrado Colorido', price: 79.90, image: '/images/products/vestido-colorido.jpg', sizes: ['4', '6', '8', '10'] },
-  { id: 'conjunto-menino', name: 'Conjunto Moletom Verde', price: 89.90, image: '/images/products/conjunto-menino.jpg', sizes: ['2', '4', '6'] },
-  { id: 'look-verao', name: 'Look Verão Praia', price: 69.90, image: '/images/products/look-verao.png', sizes: ['1', '2', '3'] },
-  { id: 'vestido-macaco', name: 'Vestido Estampa Macaco', price: 59.90, image: '/images/products/vestido-macaco.jpeg', sizes: ['P', 'M', 'G'] },
+  // CAMINHOS CORRIGIDOS para remover a subpasta /products que não existe
+  {
+    id: "vestido-colorido",
+    name: "Vestido Listrado Colorido",
+    price: 79.9,
+    image: "/images/vestido-colorido.jpg",
+    sizes: ["4", "6", "8", "10"],
+  },
+  {
+    id: "conjunto-menino",
+    name: "Conjunto Moletom Verde",
+    price: 89.9,
+    image: "/images/conjunto-menino.jpg",
+    sizes: ["2", "4", "6"],
+  },
+  {
+    id: "look-verao",
+    name: "Look Verão Praia",
+    price: 69.9,
+    image: "/images/look-verao.png",
+    sizes: ["1", "2", "3"],
+  },
+  {
+    id: "vestido-macaco",
+    name: "Vestido Estampa Macaco",
+    price: 59.9,
+    image: "/images/vestido-macaco.jpeg",
+    sizes: ["P", "M", "G"],
+  },
+];
+
+// --- DADOS DOS BANNERS ---
+const banners = [
+  {
+    image: "/images/banner-meninas.png",
+    link: "/produtos?categoria=meninas",
+    alt: "Banner da coleção de roupas para meninas",
+  },
+  {
+    image: "/images/banner-meninos.png",
+    link: "/produtos?categoria=meninos",
+    alt: "Banner da coleção de roupas para meninos",
+  },
 ];
 
 // Componente da Página Home
 export default function Home() {
   return (
     <>
-      {/* Seção Hero Banner */}
-      <section className={styles.hero}>
-        <div>
-          <h1 className={styles.heroTitle}>Vista a alegria de ser criança!</h1>
-          <p className={styles.heroSubtitle}>Conforto e estilo para os pequenos exploradores.</p>
-          <Link href="/produtos" className={styles.heroButton}>
-            Ver Coleção
-          </Link>
-        </div>
+      {/* Seção Hero com o Carrossel */}
+      <section className={styles.heroSlider}>
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          navigation
+          pagination={{ clickable: true }}
+          loop={true}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          className={styles.swiperContainer}
+        >
+          {banners.map((banner, index) => (
+            <SwiperSlide key={index}>
+              <Link href={banner.link} className={styles.slideLink}>
+                <Image
+                  src={banner.image}
+                  alt={banner.alt}
+                  fill
+                  quality={95}
+                  style={{
+                    objectFit: "contain",
+                  }}
+                  priority={index === 0}
+                />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </section>
 
       {/* Seção de Categorias */}
