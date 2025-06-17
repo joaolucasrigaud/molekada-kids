@@ -11,71 +11,69 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// --- DADOS DAS CATEGORIAS (COM CAMINHOS CORRIGIDOS) ---
+// As categorias continuarão vindo do Imgur, pois sabemos que funciona.
 const categories = [
-  // CAMINHOS CORRIGIDOS para apontar para os arquivos na raiz da pasta /public
   {
     id: "meninas",
     name: "Meninas",
-    image: "/categoria-meninas.png",
+    image: "https://i.imgur.com/DyReB34.png",
     color: "#ff69b4",
   },
   {
     id: "meninos",
     name: "Meninos",
-    image: "/categoria-meninos.png",
+    image: "https://i.imgur.com/WrwCSIk.png",
     color: "#5fb8ff",
   },
   {
     id: "outlet",
     name: "Outlet",
-    image: "/categoria-outlet.png",
+    image: "https://i.imgur.com/dEqKIvV.png",
     color: "#ff7a3d",
   },
 ];
 
-// --- DADOS DOS PRODUTOS (COM CAMINHOS CORRIGIDOS) ---
+// Os produtos continuarão vindo do placeholder.
 const featuredProducts = [
-  // CAMINHOS CORRIGIDOS para remover a subpasta /products que não existe
   {
     id: "vestido-colorido",
     name: "Vestido Listrado Colorido",
     price: 79.9,
-    image: "/images/vestido-colorido.jpg",
+    image: "https://placehold.co/400x500/EED7D1/734F40?text=Produto+1",
     sizes: ["4", "6", "8", "10"],
   },
   {
     id: "conjunto-menino",
     name: "Conjunto Moletom Verde",
     price: 89.9,
-    image: "/images/conjunto-menino.jpg",
+    image: "https://placehold.co/400x500/A8D8B9/3E664E?text=Produto+2",
     sizes: ["2", "4", "6"],
   },
   {
     id: "look-verao",
     name: "Look Verão Praia",
     price: 69.9,
-    image: "/images/look-verao.png",
+    image: "https://placehold.co/400x500/F5D499/8C6D3B?text=Produto+3",
     sizes: ["1", "2", "3"],
   },
   {
     id: "vestido-macaco",
     name: "Vestido Estampa Macaco",
     price: 59.9,
-    image: "/images/vestido-macaco.jpeg",
+    image: "https://placehold.co/400x500/D4B6A0/6B4F37?text=Produto+4",
     sizes: ["P", "M", "G"],
   },
 ];
 
-// --- DADOS DOS BANNERS ---
+// --- DADOS DOS BANNERS (ATUALIZADOS PARA CAMINHOS LOCAIS, COMO VOCÊ PEDIU) ---
 const banners = [
   {
-    image: "/images/banner-meninas.png",
+    image: "/images/banner-meninas.png", // Caminho local
     link: "/produtos?categoria=meninas",
     alt: "Banner da coleção de roupas para meninas",
   },
   {
-    image: "/images/banner-meninos.png",
+    image: "/images/banner-meninos.png", // Caminho local
     link: "/produtos?categoria=meninos",
     alt: "Banner da coleção de roupas para meninos",
   },
@@ -96,19 +94,17 @@ export default function Home() {
             delay: 4000,
             disableOnInteraction: false,
           }}
-          className={styles.swiperContainer}
         >
           {banners.map((banner, index) => (
             <SwiperSlide key={index}>
-              <Link href={banner.link} className={styles.slideLink}>
+              <Link href={banner.link}>
                 <Image
                   src={banner.image}
                   alt={banner.alt}
-                  fill
+                  width={1920}
+                  height={800}
                   quality={95}
-                  style={{
-                    objectFit: "contain",
-                  }}
+                  className={styles.bannerImage}
                   priority={index === 0}
                 />
               </Link>

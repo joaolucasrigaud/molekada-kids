@@ -14,22 +14,10 @@
   font-family: "Nunito", sans-serif;
 }
 
-.sectionSubtitle {
-  max-width: 672px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  color: #555;
-  margin-top: -2rem;
-  margin-bottom: 3rem;
-}
-
-/* Estilos para a seção de Produtos */
 .productsSection {
   background-color: #f8f9fa;
 }
 
-/* Grids */
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -38,16 +26,19 @@
   padding-right: 1rem;
 }
 
-.grid3cols {
+/* Grids */
+.grid3cols,
+.grid4cols {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
   gap: 1.5rem;
 }
 
-.grid4cols {
-  display: grid;
+.grid3cols {
   grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
+}
+
+.grid4cols {
+  grid-template-columns: repeat(2, 1fr); /* 2 colunas no mobile para produtos */
 }
 
 @media (min-width: 768px) {
@@ -55,35 +46,23 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .grid4cols {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .grid4cols {
     grid-template-columns: repeat(4, 1fr);
   }
 }
 
-/* --- ESTILOS FINAIS PARA O CARROSSEL (PROPORÇÃO CINEMATOGRÁFICA) --- */
+/* --- ESTILOS FINAIS PARA O CARROSSEL (TELA CHEIA) --- */
 .heroSlider {
-  width: 100%;
+  width: 100%; /* Ocupa a largura toda */
+  margin-top: 2rem; /* Mantém um respiro no topo */
   position: relative;
-  /* Proporção 2.4 : 1 (ex: 1920x800) */
-  aspect-ratio: 12 / 5;
-  background-color: #f8f9fa; /* Cor de fundo para preencher qualquer espaço mínimo */
+  aspect-ratio: 12 / 5; /* Proporção 2.4:1 cinematográfica */
 }
 
-.swiperContainer {
-  width: 100%;
-  height: 100%;
-}
-
-.slideLink {
+/* A nova classe para a imagem do banner */
+.bannerImage {
   display: block;
   width: 100%;
-  height: 100%;
-  position: relative;
+  height: auto;
 }
 
 /* Customizando as setas e pontinhos do Swiper */
@@ -108,21 +87,14 @@
   font-weight: bold;
 }
 
-.heroSlider :global(.swiper-pagination-bullet) {
-  background-color: white;
-  opacity: 0.7;
-}
-
 .heroSlider :global(.swiper-pagination-bullet-active) {
-  background-color: #ff7a3d; /* Laranja da sua marca */
-  transform: scale(1.2);
+  background-color: #ff7a3d;
   opacity: 1;
 }
 
-/* Ajustes para telas menores (mobile) */
 @media (max-width: 768px) {
   .heroSlider {
-    /* No mobile, uma proporção mais alta fica melhor */
     aspect-ratio: 4 / 3;
+    margin-top: 0;
   }
 }
