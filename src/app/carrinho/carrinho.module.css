@@ -1,6 +1,5 @@
-
 .cartContainer {
-  max-width: 900px;
+  max-width: 1200px; /* Increased max-width for better layout */
   margin: 2rem auto;
   padding: 1rem;
 }
@@ -22,6 +21,7 @@
 @media (min-width: 768px) {
   .cartContent {
     flex-direction: row;
+    align-items: flex-start; /* Align items to the top */
   }
 }
 
@@ -108,6 +108,8 @@
   border-radius: 0.5rem;
   padding: 1.5rem;
   background-color: #f8f9fa;
+  position: sticky; /* Make it sticky */
+  top: 2rem; /* Adjust as needed */
 }
 
 .cartSummary h2 {
@@ -132,6 +134,36 @@
   margin-top: 1.5rem;
   padding-top: 1rem;
   border-top: 1px solid #dee2e6;
+}
+
+.inputGroup {
+  margin-bottom: 1rem;
+}
+
+.inputGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.inputGroup input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+.inputGroup button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
 }
 
 .checkoutButton {
@@ -159,5 +191,3 @@
   cursor: pointer;
   margin-top: 1rem;
 }
-
-

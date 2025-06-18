@@ -1,0 +1,28 @@
+.starRating {
+  display: flex;
+  align-items: center;
+}
+
+.starRating span {
+  font-size: 1.2rem;
+  color: #ccc; /* Empty star color */
+}
+
+.starFull {
+  color: #ffc107; /* Full star color */
+}
+
+.starHalf {
+  position: relative;
+  color: #ffc107; /* Half star color */
+  overflow: hidden;
+}
+
+.starHalf::before {
+  content: "\2605"; /* Unicode for a star */
+  position: absolute;
+  left: 0;
+  width: 50%; /* Adjust as needed for half star */
+  overflow: hidden;
+  color: #ffc107;
+}
