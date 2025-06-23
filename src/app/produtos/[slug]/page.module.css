@@ -16,7 +16,7 @@
 @media (min-width: 768px) {
   .productGrid {
     /* A coluna da imagem ocupa 40%, a de informações 60% */
-    grid-template-columns: 2fr 3fr; 
+    grid-template-columns: 2fr 3fr;
   }
 }
 
@@ -30,7 +30,6 @@
 .productInfo {
   /* Placeholder para as informações do produto */
 }
-
 
 /* Estilos para o Seletor de Tamanho */
 .sizeSelector {
@@ -60,7 +59,6 @@
   color: #ff7a3d;
 }
 
-
 .quantitySelector {
   display: flex;
   align-items: center;
@@ -80,7 +78,7 @@
 }
 
 .quantityButton:hover {
-    background-color: #f8f9fa;
+  background-color: #f8f9fa;
 }
 
 .quantityInput {
@@ -110,7 +108,7 @@
 .relatedProductsTitle {
   font-size: 1.75rem;
   font-weight: bold;
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   margin-bottom: 1.5rem;
   text-align: center;
 }
@@ -139,5 +137,3 @@ scroll da barra de rolagem */
   background: #f1f1f1; /* Cor do fundo da barra de rolagem */
   border-radius: 10px;
 }
-
-
