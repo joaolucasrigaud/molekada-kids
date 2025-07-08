@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./page.module.css"; // Importação correta
 import ProductCard from "@/components/ProductCard";
 import CategoryCard from "@/components/CategoryCard";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,89 +11,82 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-// As categorias continuarão vindo do Imgur, pois sabemos que funciona.
+// Dados 100% Locais
 const categories = [
   {
     id: "meninas",
     name: "Meninas",
-    image: "https://i.imgur.com/DyReB34.png",
+    image: "/images/categoria-meninas.png",
     color: "#ff69b4",
   },
   {
     id: "meninos",
     name: "Meninos",
-    image: "https://i.imgur.com/WrwCSIk.png",
+    image: "/images/categoria-meninos.png",
     color: "#5fb8ff",
   },
   {
     id: "outlet",
     name: "Outlet",
-    image: "https://i.imgur.com/dEqKIvV.png",
+    image: "/images/categoria-outlet.png",
     color: "#ff7a3d",
   },
 ];
 
-// Os produtos continuarão vindo do placeholder.
 const featuredProducts = [
   {
     id: "vestido-colorido",
     name: "Vestido Listrado Colorido",
     price: 79.9,
-    image: "https://placehold.co/400x500/EED7D1/734F40?text=Produto+1",
+    image: "/images/produtos/vestido-colorido.jpg",
     sizes: ["4", "6", "8", "10"],
   },
   {
     id: "conjunto-menino",
     name: "Conjunto Moletom Verde",
     price: 89.9,
-    image: "https://placehold.co/400x500/A8D8B9/3E664E?text=Produto+2",
+    image: "/images/produtos/conjunto-menino.jpg",
     sizes: ["2", "4", "6"],
   },
   {
     id: "look-verao",
     name: "Look Verão Praia",
     price: 69.9,
-    image: "https://placehold.co/400x500/F5D499/8C6D3B?text=Produto+3",
+    image: "/images/produtos/look-verao.png",
     sizes: ["1", "2", "3"],
   },
   {
     id: "vestido-macaco",
     name: "Vestido Estampa Macaco",
     price: 59.9,
-    image: "https://placehold.co/400x500/D4B6A0/6B4F37?text=Produto+4",
+    image: "/images/produtos/vestido-macaco.jpeg",
     sizes: ["P", "M", "G"],
   },
 ];
 
-// --- DADOS DOS BANNERS (ATUALIZADOS PARA CAMINHOS LOCAIS, COMO VOCÊ PEDIU) ---
 const banners = [
   {
-    image: "/images/banner-meninas.png", // Caminho local
+    image: "/images/banner-meninas.png",
     link: "/produtos?categoria=meninas",
     alt: "Banner da coleção de roupas para meninas",
   },
   {
-    image: "/images/banner-meninos.png", // Caminho local
+    image: "/images/banner-meninos.png",
     link: "/produtos?categoria=meninos",
     alt: "Banner da coleção de roupas para meninos",
   },
 ];
 
-// Componente da Página Home
 export default function Home() {
   return (
     <>
-      {/* Seção Hero com o Carrossel */}
       <section className={styles.heroSlider}>
         <Swiper
           modules={[Navigation, Pagination, Autoplay]}
           navigation
           pagination={{ clickable: true }}
-          loop={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
+          loop={false}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
         >
           {banners.map((banner, index) => (
             <SwiperSlide key={index}>
@@ -112,8 +105,6 @@ export default function Home() {
           ))}
         </Swiper>
       </section>
-
-      {/* Seção de Categorias */}
       <section className={styles.section}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Navegue por Categorias</h2>
@@ -130,8 +121,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Seção de Produtos em Destaque */}
       <section className={`${styles.section} ${styles.productsSection}`}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Produtos em Destaque</h2>
